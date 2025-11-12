@@ -8,8 +8,8 @@ import (
 	"net/http/httputil"
 	"strconv"
 
-	lz4 "github.com/cloudflare/golz4"
 	"github.com/gogo/protobuf/proto"
+	"github.com/pierrec/lz4/v4"
 )
 
 // LogStore stores the logs
@@ -80,8 +80,8 @@ func (s *LogStore) PutLogs(lg *LogGroup) (err error) {
 	}
 
 	// Compress body with lz4
-	out := make([]byte, lz4.CompressBound(body))
-	n, err := lz4.Compress(body, out)
+	out := make([]byte, lz4.CompressBlockBound(len(body)))
+	n, err := lz4.CompressBlock(body, out, nil)
 	if err != nil {
 		return
 	}
@@ -231,7 +231,7 @@ func (s *LogStore) GetLogsBytes(shardID int, cursor string,
 	}
 
 	out = make([]byte, bodyRawSize)
-	err = lz4.Uncompress(buf, out)
+	_, err = lz4.UncompressBlock(buf, out)
 	if err != nil {
 		return
 	}

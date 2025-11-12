@@ -1,13 +1,12 @@
 module github.com/beego/beego/v2
 
-go 1.24.2
+go 1.24.1
 
 require (
 	github.com/beego/x2j v0.0.0-20131220205130-a0352aadc542
 	github.com/bits-and-blooms/bloom/v3 v3.5.0
 	github.com/bradfitz/gomemcache v0.0.0-20250403215159-8d39553ac7cf
 	github.com/casbin/casbin v1.9.1
-	github.com/cloudflare/golz4 v0.0.0-20240916140612-caecf3c00c06
 	github.com/couchbase/go-couchbase v0.1.1
 	github.com/elastic/go-elasticsearch/v6 v6.8.10
 	github.com/elazarl/go-bindata-assetfs v1.0.1
@@ -25,6 +24,7 @@ require (
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/opentracing/opentracing-go v1.2.0
 	github.com/pelletier/go-toml v1.9.5
+	github.com/pierrec/lz4/v4 v4.1.22
 	github.com/prometheus/client_golang v1.22.0
 	github.com/redis/go-redis/v9 v9.8.0
 	github.com/shiena/ansicolor v0.0.0-20230509054315-a9deabde6e02
